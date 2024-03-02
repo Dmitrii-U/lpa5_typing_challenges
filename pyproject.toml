@@ -1,0 +1,89 @@
+[tool.poetry]
+name = "typing-challenges"
+version = "0.1.0"
+description = "learn type annotation"
+authors = ["Dmitrii Uzunov <duyzillio@gmail.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+email-validate = "^1.1.2"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.2.2"
+pytest = "^8.0.1"
+mypy = "^1.8.0"
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+fix = false
+show-fixes = true
+show-source = true
+output-format = "full"
+extend-exclude = ["*.pyi"]
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = [
+  "A",      # flake8-builtins
+  "ANN",    # flake8-annotations
+  "ARG",    # flake8-unused-arguments
+  "ASYNC",  # flake8-async
+  "B",      # flake8-bugbear
+  "C4",     # flake8-comprehensions
+  "C90",    # mccabe
+  "DTZ",    # flake8-datetimez
+  "E",      # pycodestyl
+  "EM",     # flake8-errmsg
+  "ERA",    # eradicate
+  "F",      # pyflakes
+  "FBT",    # flake8-boolean-trap
+  "INT",    # flake8-gettext
+  "N",      # pep8-naming
+  "PL",     # Pylint
+  "PERF",   # Perflint
+  "PT",     # flake8-pytest-style
+  "RET",    # flake8-return
+  "RUF",    # Ruff-specific rules
+  "S",      # flake8-bandit
+  "SLF",    # flake8-flake8-self
+  "T20",    # flake8-print
+  "TRY",    # tryceratops
+  "SIM",    # flake8-simplify
+  "UP",     # pyupgrade
+  "W",      # pycodestyle
+]
+ignore = ["ANN101", "RUF001", "N999"]
+ignore-init-module-imports = true
+
+[tool.ruff.lint.extend-per-file-ignores]
+"**/{tests,docs,tools}/*" = ["E402", "S101", "ANN401", "ANN001", "S603", "ARG001"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.lint.isort]
+lines-between-types = 1
+lines-after-imports = 2
+
+[tool.ruff.lint.mccabe]
+# Flag errors (`C901`) whenever the complexity level exceeds 6.
+max-complexity = 6
+
+[tool.ruff.lint.pylint]
+allow-dunder-method-names = ["__tablename__", "__table_args__"]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
