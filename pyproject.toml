@@ -19,7 +19,6 @@ line-length = 120
 target-version = "py312"
 fix = false
 show-fixes = true
-show-source = true
 output-format = "full"
 extend-exclude = ["*.pyi"]
 
@@ -58,6 +57,7 @@ select = [
 ]
 ignore = ["ANN101", "RUF001", "N999"]
 ignore-init-module-imports = true
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 [tool.ruff.lint.extend-per-file-ignores]
 "**/{tests,docs,tools}/*" = ["E402", "S101", "ANN401", "ANN001", "S603", "ARG001"]
